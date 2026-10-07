@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virkelighed Eller Fup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-perception="objective">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="warp-filter" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.011" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap id="warp-disp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <div id="app">
+    <div id="stage">
+      <div id="bg-layer"></div>
+      <div id="characters"></div>
+      <div id="grade-layer"></div>
+      <div id="fx-layer"></div>
+    </div>
+    <div id="vignette"></div>
+    <div id="grain"></div>
+    <div id="transition-overlay"></div>
+
+    <div id="choices" role="group" aria-label="Choices" hidden></div>
+
+    <div id="textbox" hidden>
+      <div id="speaker" hidden></div>
+      <p id="dialogue-text" aria-hidden="true"></p>
+      <span id="continue" hidden aria-hidden="true">&#9670;</span>
+    </div>
+    <div id="sr-text" class="sr-only" aria-live="polite"></div>
+
+    <nav id="hud" aria-label="Game controls" hidden>
+      <button data-act="auto" aria-pressed="false" title="Auto-play (A)">Auto</button>
+      <button data-act="skip" aria-pressed="false" title="Skip (S, or hold Ctrl)">Skip</button>
+      <button data-act="history" title="History (H)">History</button>
+      <button data-act="voice" title="Replay voice (V)">Voice</button>
+      <button data-act="save" title="Save">Save</button>
+      <button data-act="load" title="Load">Load</button>
+      <button data-act="menu" title="Menu (Esc)">Menu</button>
+    </nav>
+
+    <section id="title-screen" class="screen">
+      <h1>Virkelighed Eller Fup</h1>
+      <p class="subtitle">A Hamlet Rendition</p>
+      <div class="menu">
+        <button data-act="new">New Game</button>
+        <button data-act="continue">Continue</button>
+        <button data-act="load">Load</button>
+        <button data-act="settings">Settings</button>
+      </div>
+    </section>
+
+    <section id="pause-menu" class="screen modal" hidden>
+      <h2>Paused</h2>
+      <div class="menu">
+        <button data-act="resume">Resume</button>
+        <button data-act="save">Save</button>
+        <button data-act="load">Load</button>
+        <button data-act="restart">Restart Scene</button>
+        <button data-act="history">History</button>
+        <button data-act="settings">Settings</button>
+        <button data-act="title">Quit to Title</button>
+      </div>
+    </section>
+
+    <section id="settings-panel" class="screen modal" hidden>
+      <h2>Settings</h2>
+      <div id="settings-body" class="panel-body"></div>
+      <button class="back" data-act="back">Back</button>
+    </section>
+
+    <section id="saveload-panel" class="screen modal" hidden>
+      <h2 id="saveload-title">Save</h2>
+      <div id="saveload-body" class="panel-body"></div>
+      <button class="back" data-act="back">Back</button>
+    </section>
+
+    <section id="history-panel" class="screen modal" hidden>
+      <h2>History</h2>
+      <div id="history-body" class="panel-body"></div>
+      <button class="back" data-act="back">Back</button>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
